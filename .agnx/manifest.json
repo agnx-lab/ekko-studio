@@ -1,0 +1,44 @@
+{
+  "id": "ekko-studio",
+  "name": "EKKO Studio",
+  "version": "0.7.34",
+  "description": "Ekko Studio 本地 AI 工作台：多 Agent 聊天与可视化工作流；Web UI 嵌进 Agnx Tab（不嵌 Electron）",
+  "engines": {
+    "agnx": ">=1.0.0"
+  },
+  "main": "./dist/index.js",
+  "icon": "./.agnx/assets/icon.png",
+  "platforms": {
+    "desktop": "supported",
+    "web": "supported",
+    "mobile": "unsupported"
+  },
+  "sidecar": {
+    "supervised": true,
+    "ensureTool": ".agnx/tools/ensure-ekko-studio.mjs",
+    "stateFile": "ekko-studio.json",
+    "defaultPort": 8649
+  },
+  "guest": {
+    "kind": "web",
+    "auth": "none",
+    "capabilities": [
+      "websocket"
+    ],
+    "preferStrategy": "auto"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "id": "ekko-studio.open",
+        "title": "EKKO Studio"
+      }
+    ],
+    "panels": [
+      {
+        "id": "ekko-studio.main",
+        "title": "EKKO Studio"
+      }
+    ]
+  }
+}

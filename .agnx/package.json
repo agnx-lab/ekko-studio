@@ -1,0 +1,26 @@
+{
+  "name": "@agnx-sub/ekko-studio",
+  "version": "0.7.34",
+  "private": true,
+  "description": "Agnx 子应用胶水：EKKO Studio Web Guest + supervised sidecar",
+  "main": "dist/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "build": "node ./scripts/build.mjs",
+    "dev": "node ./scripts/dev-watch.mjs"
+  },
+  "peerDependencies": {
+    "@agnx-lab/app-sdk": "*",
+    "react": "*",
+    "react-native": "*",
+    "react-native-unistyles": "*"
+  },
+  "peerDependenciesMeta": {
+    "@agnx-lab/app-sdk": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}
