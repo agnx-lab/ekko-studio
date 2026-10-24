@@ -2,7 +2,7 @@
 
 ## 上游嵌入
 
-- 工作方式：仓内加 `.agnx/` 胶水（主流 Wrap + Sidecar）。真树可软链到 `~/.agnx-dev/apps/ekko-studio`。
+- 工作方式：仓内加 `.agnx/` 胶水（主流 Wrap + Sidecar）。真树可软链到 `$AGNX_HOME/apps/ekko-studio`。
 - 推荐模式：L8 Web Guest。Tab 里是上游 Vite Web UI；Koa 后端 + Vite 由 Agnx daemon 托管，**不嵌 Electron / 桌面壳**。
 - 挂载：`guest.auth=none` / 策略=`auto`→桌面 **`direct-iframe`**（对齐 OpenSEO/`auth=none` 合同；勿强制 `guest-webview`，否则 Electron `<webview>` 易丢键盘焦点）
 - 上游：https://github.com/EKKOLearnAI/ekko-studio
@@ -31,14 +31,14 @@
 
 ```bash
 # 软链到 AGNX_HOME（推荐，便于扫盘发现）
-ln -sfn /Users/apple/Downloads/ekko-studio ~/.agnx-dev/apps/ekko-studio
+ln -sfn ~/Downloads/ekko-studio $AGNX_HOME/apps/ekko-studio
 
 # 或用 Agnx 登记脚本写 .agnx/config.json / overlay
-cd /Users/apple/Documents/github/agnx
-npm run sub-apps:register -- --app-id=ekko-studio --root=/Users/apple/Downloads/ekko-studio --source=local
+cd $AGNX_MONOREPO
+npm run sub-apps:register -- --app-id=ekko-studio --root=~/Downloads/ekko-studio --source=local
 
 # 胶水改过需重建 dist
-node /Users/apple/Downloads/ekko-studio/.agnx/scripts/build.mjs
+node ~/Downloads/ekko-studio/.agnx/scripts/build.mjs
 
 # Agnx 命令面板 → 子应用 → 重新扫描
 ```
